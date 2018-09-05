@@ -1,6 +1,6 @@
 {
-  "name": "word-wrapper",
-  "version": "1.0.7",
+  "name": "word-wrapper-improved",
+  "version": "1.0.8",
   "description": "wraps words based on arbitrary 2D glyphs",
   "main": "index.js",
   "license": "MIT",
@@ -40,7 +40,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git://github.com/mattdesl/word-wrapper.git"
+    "url": "git://github.com/ltyl/word-wrapper.git"
   },
   "homepage": "https://github.com/mattdesl/word-wrapper",
   "bugs": {
