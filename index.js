@@ -67,7 +67,7 @@ function greedy(measure, text, start, end, width, mode) {
 	//A greedy word wrapper based on LibGDX algorithm
 	//https://github.com/libgdx/libgdx/blob/master/gdx/src/com/badlogic/gdx/graphics/g2d/BitmapFontCache.java
 	var lines = []
-
+	
 	var testWidth = width
 	//if 'nowrap' is specified, we only wrap on newline chars
 	if (mode === 'nowrap')
@@ -81,7 +81,7 @@ function greedy(measure, text, start, end, width, mode) {
 		while (start < newLine) {
 			if (!isWhitespace( text.charAt(start) ))
 				break
-			start++
+			start++;
 		}
 
 		//determine visible # of glyphs for the available width
@@ -91,7 +91,7 @@ function greedy(measure, text, start, end, width, mode) {
 		var nextStart = lineEnd + newlineChar.length
 
 		//if we had to cut the line before the next newline...
-		if (lineEnd < newLine && breakWord) {
+		if (lineEnd < newLine && !breakWord) {
 			//find char to break on
 			while (lineEnd > start) {
 				if (isWhitespace(text.charAt(lineEnd)))
@@ -100,14 +100,14 @@ function greedy(measure, text, start, end, width, mode) {
 			}
 			if (lineEnd === start) {
 				if (nextStart > start + newlineChar.length) nextStart--
-				lineEnd = nextStart // If no characters to break, show all.
+				lineEnd = nextStart - newlineChar.length // If no characters to break, show all.
 			} else {
 				nextStart = lineEnd
 				//eat whitespace at end of line
 				while (lineEnd > start) {
 					if (!isWhitespace(text.charAt(lineEnd - newlineChar.length)))
 						break
-					lineEnd--
+					lineEnd--;
 				}
 			}
 		}
